@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+<title>Login</title>
+{% block scripts %}
+<script>
+    function validarSenha() {
+        var password = document.getElementById("senha").value;
+
+        if (password.length < 5){
+            aler("Senha deve ter pelo menos 8 caracteres");
+            return false;
+        }
+
+        var uppercaseRegex = /[A-Z]/;
+        var numberRegex = /[0-9]/;
+
+        if (!uppercaseRegex.test(password) || !numberRegex.test(password)){
+            alert("A senha deve conter pelo menos ua letra maiúscula e um número")
+            return false;
+        }
+        return true;
+    }
+</script>
+{%  endblock %}
+{% block conteudo %}
+    <form action="/autenticar" method="post" onsubmit="return validarSenha()" >
+        <!-- ao clickar no botão OK, no submit vai para a rota /autenticar -->
+        <br/><br/>
+        <!--Quando trabalha com métodos GET (padrão) ou POST definimos 
+            os nomes e tipo de dado de cada campo que trabalha no formulário--> 
+        <!-- Usuário: <input type = "text" name="nome_usuario"><br/><br/>
+        Senha  : <input type = "text" name="senha"><br/><br/>
+        <button type = "submit">OK</button> -->
+        <label for="username">Usuário:</label>
+        <input type="text" id="nome_usuario" name="nome_usuario" required><br><br>
+        <label for="password">Senha:</label>
+        <input type="password" id="senha" name="senha" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+
+{% endblock %}
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/estilo.css')}}">
+    {% block scripts %} {% endblock %}
+    <title>Base</title>
+</head>
+<body>
+    <img src="https://ifro.edu.br/img/logo-ifro-hotsite.png" alt="logo ifro" width=70 height=70>
+    <br>
+    <nav>
+        <a href="/index">Página inicial</a> 
+        <a href="/contato">Contato</a>
+    </nav>
+    {% block conteudo %}
+
+    {% endblock %}
+</body>
+</html>
